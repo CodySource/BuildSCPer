@@ -1,0 +1,14 @@
+{
+  "name": "com.codysource.buildscper",
+  "version": "1.0.0",
+  "displayName": "Build SCPer",
+  "description": "This package allows for expedited build uploading to remote resources using SCP. Consult the requirements for SSH connections to your remote resource before using this package.",
+  "unity": "2020.3",
+  "unityRelease": "15f2",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  },
+  "author": {
+    "name": "Cody Source"
+  }
+}

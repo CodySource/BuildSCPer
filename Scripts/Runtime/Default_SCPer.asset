@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e835f62bd4f63489bb60f2ee7ddf88, type: 3}
+  m_Name: Default_SCPer
+  m_EditorClassIdentifier: 
+  buildContentProcess:
+    enabled: 1
+    sshKeyLocation: C:\Users\walka\.ssh\cw013v_ed25519
+    remoteLocation: onlinemedia@onlinemedia.ssh.wpengine.net:sites/onlinemedia/wp-content/uploads/webgl/FLEX
+  additionalUploadProcesses:
+  - enabled: 1
+    sshKeyLocation: C:\Users\walka\.ssh\cw013v_ed25519
+    uploads:
+    - {fileID: 102900000, guid: 325c70d1cefcb194db4f712b9ef31185, type: 3}
+    remoteLocation: satinstall2@satinstall2.ssh.wpengine.net:sites/satinstall2/~support/webgl_test/Analytics
+  - enabled: 1
+    sshKeyLocation: C:\Users\walka\.ssh\cw013v_ed25519
+    uploads:
+    - {fileID: 102900000, guid: 060d68980d3615e4484f8938cfee7b6d, type: 3}
+    - {fileID: 102900000, guid: 3d74ee69e17f6e141bd79e2ebb63e651, type: 3}
+    remoteLocation: onlinemedia@onlinemedia.ssh.wpengine.net:sites/onlinemedia/~support/webgl/FLEX
