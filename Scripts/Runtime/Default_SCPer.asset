@@ -14,17 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildContentProcess:
     enabled: 1
-    sshKeyLocation: C:\Users\walka\.ssh\cw013v_ed25519
-    remoteLocation: onlinemedia@onlinemedia.ssh.wpengine.net:sites/onlinemedia/wp-content/uploads/webgl/FLEX
-  additionalUploadProcesses:
-  - enabled: 1
-    sshKeyLocation: C:\Users\walka\.ssh\cw013v_ed25519
-    uploads:
-    - {fileID: 102900000, guid: 325c70d1cefcb194db4f712b9ef31185, type: 3}
-    remoteLocation: satinstall2@satinstall2.ssh.wpengine.net:sites/satinstall2/~support/webgl_test/Analytics
-  - enabled: 1
-    sshKeyLocation: C:\Users\walka\.ssh\cw013v_ed25519
-    uploads:
-    - {fileID: 102900000, guid: 060d68980d3615e4484f8938cfee7b6d, type: 3}
-    - {fileID: 102900000, guid: 3d74ee69e17f6e141bd79e2ebb63e651, type: 3}
-    remoteLocation: onlinemedia@onlinemedia.ssh.wpengine.net:sites/onlinemedia/~support/webgl/FLEX
+    sshKeyLocation: 
+    remoteLocation: 
+  additionalUploadProcesses: []
