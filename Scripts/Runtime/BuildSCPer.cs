@@ -64,7 +64,15 @@ namespace CodySource
         /// Performs the uploads
         /// </summary>
         private void _RunUploadProcesses(BuildInfo pInfo) => additionalUploadProcesses.ForEach(process => {
-            if (process.enabled) process.uploads.ForEach(upload => Process.Start("CMD.exe", $"/C scp -i {process.sshKeyLocation} {UnityEditor.AssetDatabase.GetAssetPath(upload)} {process.remoteLocation}"));
+            string cmd = "/C echo Initiating additional upload... &&";
+            if (process.enabled) process.uploads.ForEach(upload => {
+                cmd += $" scp -i {process.sshKeyLocation} {UnityEditor.AssetDatabase.GetAssetPath(upload)} {process.remoteLocation} &";
+                });
+            _processes++;
+            Process p = Process.Start("CMD.exe", cmd + "& Pause");
+            p.EnableRaisingEvents = true;
+            p.Exited += (s, e) => _processes--;
+            p.Disposed += (s, e) => _processes--;
         });
 
         /// <summary>
@@ -80,18 +88,17 @@ namespace CodySource
             remove.ForEach(f => buildFiles.Remove(f));
             //  Add additional files
             for (int f = 0; f < pInfo.filePaths.Length; f++) buildFiles.Add(pInfo.filePaths[f]);
+            string cmd = "/C echo Initiating upload process... &&";
             buildFiles.ForEach(b =>
             {
                 string remote = buildContentProcess.remoteLocation + b.Replace(pInfo.outputPath, "").Replace(Path.GetFileName(b), "");
-                if (File.Exists(b))
-                {
-                    _processes++;
-                    Process p = Process.Start("CMD.exe", $"/C scp -i {buildContentProcess.sshKeyLocation} {b} {remote}");
-                    p.EnableRaisingEvents = true;
-                    p.Exited += (s, e) => _processes--;
-                    p.Disposed += (s, e) => _processes--;
-                }
+                if (File.Exists(b)) cmd += $" scp -i {buildContentProcess.sshKeyLocation} {b} {remote} &";
             });
+            _processes++;
+            Process p = Process.Start("CMD.exe", cmd + "& Pause");
+            p.EnableRaisingEvents = true;
+            p.Exited += (s, e) => _processes--;
+            p.Disposed += (s, e) => _processes--;
         }
 
         #endregion
